@@ -10,7 +10,12 @@ export const site = {
   url: 'https://ankithans.com',
   socials: [
     { label: 'GitHub', href: 'https://github.com/ankithans', handle: '@ankithans' },
-    { label: 'X', href: 'https://x.com/ankithans_', handle: '@ankithans_' },
+    { label: 'X', href: 'https://x.com/AnkitHans15', handle: '@AnkitHans15' },
+    {
+      label: 'Instagram',
+      href: 'https://www.instagram.com/thisisankithans',
+      handle: '@thisisankithans',
+    },
     {
       label: 'LinkedIn',
       href: 'https://linkedin.com/in/ankithans',
