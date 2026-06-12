@@ -1,0 +1,79 @@
+---
+title: Uplauz
+slug: uplauz
+org: Founder
+role: Technical Cofounder — Full-Stack
+period: 2025 — Present
+status: Live
+order: 3
+tagline: live-music platform for artists and venues
+summary: >-
+  A live-event revenue platform for artists and venues — QR audience join, song
+  requests, UPI tips, big-screen show surfaces, and AI song detection. I'm the
+  technical cofounder and primary builder; I wrote nearly all of it.
+stack:
+  - Next.js
+  - Convex
+  - UPI / Payments
+  - Cloudflare (media / livestream)
+  - LLMs / audio
+metrics:
+  - { value: "322/323", label: "commits authored" }
+  - { value: "1", label: "AIC Manipur grant" }
+  - { value: "0→1", label: "built from scratch" }
+cover: /media/uplauz-flow.svg
+---
+
+## The idea
+
+Live shows are full of moments that never get captured — the song someone is
+dying to hear, the tip they'd happily send, the dedication they'd shout if they
+could. Uplauz turns a live audience into a participating, paying one: scan a QR
+to join, request songs, send UPI tips, drop dedications and polls, and watch it
+all surface on the big screen behind the artist.
+
+It's a live-event **revenue and engagement OS** for artists and venues.
+
+## My role
+
+I'm the technical cofounder and the person who builds it. Local git history shows
+**322 of 323 commits** authored by me — from the first Next.js commit through
+payments, the realtime backend, media/livestream, telemetry, and AI song
+detection. Three of us on the team; I own all of engineering.
+
+<Spec rows={[
+  ["Frontend", "Next.js / React — audience, artist, and big-screen surfaces"],
+  ["Backend", "Convex realtime — requests, tips, polls, presence"],
+  ["Payments", "UPI flows for tips and support"],
+  ["Media", "Cloudflare-backed livestream + media infra"],
+  ["Intelligence", "LLM-assisted song detection from live transcripts"],
+]} />
+
+## A piece I'm proud of: live song detection
+
+During a show, the system listens to a realtime transcript and uses an LLM
+classifier — with a lock policy and fallback logic — to detect which song is
+playing, so requests and the screen stay in sync with the set. It shipped with
+tests and an architecture doc. The strongest pilot for it ran with the band
+**Agnee**.
+
+<Figure src="/media/uplauz-flow.svg" alt="uplauz — audience join, request queue, and big-screen show surface" caption="Representative: phone (QR join + requests) → big-screen show surface" />
+
+## Traction
+
+Built from zero to a live product with real shows. Secured an **AIC Manipur
+grant** (Atal Incubation Centre) and ran artist/venue pilots — including work
+with Agnee, Indofunk, and others.
+
+<Metrics items={[
+  { value: "0→1", label: "designed & built solo" },
+  { value: "AIC", label: "Manipur grant" },
+  { value: "live", label: "real shows run" },
+]} />
+
+## What I took from it
+
+Founder mode is full-stack in the literal sense: the database schema and the
+on-stage UX are the same problem. Shipping something people use *while it's
+happening live* is a brutal, wonderful constraint — there's no "deploy and check
+tomorrow." It either works during the encore or it doesn't.

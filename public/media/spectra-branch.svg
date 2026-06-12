@@ -1,0 +1,51 @@
+<svg width="880" height="495" viewBox="0 0 880 495" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Representative database branching diagram">
+  <style>
+    .ln{stroke:#8b8a84;stroke-width:1.4}
+    .lf{stroke:#8b8a84;stroke-width:1.4;opacity:.4}
+    .fl{fill:#8b8a84;opacity:.12}
+    .ff{fill:#8b8a84;opacity:.3}
+    .ac{stroke:#46a06a;stroke-width:1.8}
+    .acf{fill:#46a06a;opacity:.16}
+    .acs{fill:#46a06a}
+    .nd{fill:#f7f6f3;stroke:#8b8a84;stroke-width:1.6}
+    .ndc{fill:#f7f6f3;stroke:#46a06a;stroke-width:1.8}
+  </style>
+  <rect x="40.7" y="40.7" width="798.6" height="413.6" rx="14" class="ln" fill="none"/>
+
+  <!-- main trunk -->
+  <line x1="96" y1="248" x2="784" y2="248" class="ln"/>
+  <text x="96" y="300" fill="#8b8a84" opacity=".6" font-family="monospace" font-size="13">main</text>
+
+  <!-- branch up (copy-on-write) -->
+  <path d="M300 248 C 360 248, 360 150, 430 150 L 700 150" class="ac" fill="none"/>
+  <text x="430" y="135" fill="#46a06a" font-family="monospace" font-size="13">branch · feature</text>
+
+  <!-- branch down -->
+  <path d="M470 248 C 530 248, 530 346, 600 346 L 720 346" class="lf" fill="none"/>
+  <text x="600" y="372" fill="#8b8a84" opacity=".6" font-family="monospace" font-size="13">branch · ci</text>
+
+  <!-- trunk nodes -->
+  <circle cx="160" cy="248" r="11" class="nd"/>
+  <circle cx="300" cy="248" r="11" class="nd"/>
+  <circle cx="470" cy="248" r="11" class="nd"/>
+  <circle cx="620" cy="248" r="11" class="nd"/>
+  <circle cx="760" cy="248" r="11" class="nd"/>
+
+  <!-- branch nodes -->
+  <circle cx="560" cy="150" r="11" class="ndc"/>
+  <circle cx="700" cy="150" r="13" class="ndc"/>
+  <path d="M694 150 l5 5 l9 -10" class="ac" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="720" cy="346" r="11" class="nd"/>
+
+  <!-- project label / db cylinder -->
+  <g transform="translate(96,120)">
+    <ellipse cx="0" cy="0" rx="22" ry="7" class="fl"/>
+    <path d="M-22 0 v26 a22 7 0 0 0 44 0 v-26" class="ln" fill="none"/>
+    <ellipse cx="0" cy="0" rx="22" ry="7" class="ln" fill="none"/>
+  </g>
+  <text x="64" y="172" fill="#8b8a84" opacity=".6" font-family="monospace" font-size="12">project</text>
+
+  <!-- timing chips -->
+  <rect x="560" y="408" width="220" height="30" rx="8" class="acf"/>
+  <text x="576" y="428" fill="#46a06a" font-family="monospace" font-size="13">&lt;5s full-data branch</text>
+</svg>

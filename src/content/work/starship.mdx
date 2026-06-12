@@ -1,0 +1,95 @@
+---
+title: Starship
+slug: starship
+org: Tessell
+role: Product Engineer — Agent Systems
+period: 2026 — Present
+status: Building
+order: 1
+tagline: agent runtime, console, and sandbox infrastructure
+summary: >-
+  An agentic engineering platform where co-builder agents run software tasks in
+  ephemeral sandboxes. I built the agent runtime, the live console, and the EKS
+  workspace layer that makes sandboxes fast and resumable.
+stack:
+  - TypeScript
+  - Go
+  - React
+  - WebSockets
+  - AWS / EKS / S3
+  - Terraform
+metrics:
+  - { value: "1,486", label: "agent runs reported" }
+  - { value: "98", label: "repos in scope" }
+  - { value: "661", label: "PRs touched" }
+cover: /media/starship-console.svg
+---
+
+<Callout label="confidentiality">
+  Starship is an unreleased Tessell product. Everything here is an abstracted,
+  representative account of my work — diagrams are redrawn and any UI shown is a
+  generic mock, not the real product or customer data.
+</Callout>
+
+## The problem
+
+Engineering teams want to hand work to agents — "fix this flaky test", "open a
+PR that migrates this module" — but agents need somewhere safe and fast to run.
+A real workspace with the repo, the toolchain, and live execution. Spinning that
+up per task is slow, and tearing it down loses the context an agent built up.
+
+Starship is the platform for that: **co-builder agents that run real software
+engineering tasks inside ephemeral, resumable sandboxes**, orchestrated from a
+control plane and observable from a single console.
+
+## What I built
+
+<Spec rows={[
+  ["Runtime", "The agent runtime + supervisor that runs inside each sandbox"],
+  ["Console", "The live, durable chat/transcript surface engineers drive agents from"],
+  ["Workspaces", "The EKS + S3 layer that makes sandboxes fast to start and resume"],
+  ["Reporting", "Production telemetry over every agent run — cost, success, artifacts"],
+]} />
+
+### Agent console
+
+The console is where a person and an agent meet. It is a realtime surface over
+WebSockets with **durable transcript replay** — you can close the tab mid-run
+and come back to the full history, including approvals, user-input prompts,
+attached images, terminal context, and the diff of changed files. I built the
+socket state machine, the replay model, and the runtime-event plumbing that
+keeps the UI honest about what the agent is actually doing.
+
+<Figure src="/media/starship-console.svg" alt="agent console — durable transcript over websockets" caption="Representative: live agent console with transcript replay, approvals, and changed-file diffs" />
+
+### Fast, resumable sandboxes
+
+A sandbox that takes a minute to boot kills the loop. I worked on the workspace
+runtime on EKS with **S3-backed file resume** and runtime leases, so a workspace
+can be paused and brought back with its filesystem intact instead of rebuilt
+from scratch.
+
+### Review automation & triggers
+
+Beyond the interactive loop, I built **GitHub PR review automation** — structured
+review prompts, a validator, maintainability signals, and durable review actions
+that survive restarts — plus workflow triggers across GitHub, Jira, and Slack:
+mention an agent, capture context, run, report back.
+
+## Impact
+
+I built the production reporting layer that the team runs on, covering cost,
+success/failure, missing artifacts, and review modes across every workflow run.
+
+<Metrics items={[
+  { value: "1,486", label: "agent runs covered by reporting" },
+  { value: "98", label: "repositories in scope" },
+  { value: "661", label: "pull requests touched" },
+]} />
+
+## What I took from it
+
+Agent products live or die on **trust and latency**. Trust comes from making the
+agent's work legible — durable transcripts, visible diffs, explicit approvals.
+Latency comes from the unglamorous infrastructure underneath: how fast a
+sandbox starts, how cheaply it resumes. I got to own both ends.

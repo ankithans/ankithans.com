@@ -1,0 +1,56 @@
+<svg width="880" height="495" viewBox="0 0 880 495" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Representative agent console wireframe">
+  <style>
+    .ln{stroke:#8b8a84;stroke-width:1.4}
+    .lf{stroke:#8b8a84;stroke-width:1.4;opacity:.45}
+    .fl{fill:#8b8a84;opacity:.12}
+    .ff{fill:#8b8a84;opacity:.28}
+    .ac{stroke:#46a06a;stroke-width:1.6}
+    .acf{fill:#46a06a;opacity:.16}
+    .acs{fill:#46a06a}
+  </style>
+  <rect x="40.7" y="40.7" width="798.6" height="413.6" rx="14" class="ln" fill="none"/>
+  <!-- title bar -->
+  <line x1="41" y1="78" x2="839" y2="78" class="lf"/>
+  <circle cx="64" cy="59" r="4.5" class="ff"/>
+  <circle cx="80" cy="59" r="4.5" class="ff"/>
+  <circle cx="96" cy="59" r="4.5" class="ff"/>
+  <rect x="360" y="53" width="160" height="12" rx="6" class="fl"/>
+  <!-- left rail -->
+  <line x1="190" y1="78" x2="190" y2="454" class="lf"/>
+  <rect x="64" y="104" width="100" height="9" rx="4.5" class="ff"/>
+  <rect x="64" y="128" width="78" height="8" rx="4" class="fl"/>
+  <rect x="64" y="148" width="92" height="8" rx="4" class="fl"/>
+  <rect x="60" y="168" width="120" height="22" rx="6" class="acf"/>
+  <rect x="68" y="176" width="70" height="7" rx="3.5" class="acs" opacity=".5"/>
+  <rect x="64" y="206" width="84" height="8" rx="4" class="fl"/>
+  <rect x="64" y="226" width="96" height="8" rx="4" class="fl"/>
+  <!-- transcript: user bubble -->
+  <circle cx="226" cy="116" r="9" class="ff"/>
+  <rect x="246" y="104" width="300" height="34" rx="9" class="fl"/>
+  <rect x="258" y="114" width="220" height="7" rx="3.5" class="ff"/>
+  <rect x="258" y="127" width="150" height="6" rx="3" class="ff"/>
+  <!-- agent: diff panel -->
+  <circle cx="226" cy="176" r="9" class="ac" fill="none"/>
+  <rect x="246" y="162" width="556" height="150" rx="10" class="ln" fill="none"/>
+  <line x1="246" y1="188" x2="802" y2="188" class="lf"/>
+  <rect x="260" y="172" width="90" height="8" rx="4" class="ff"/>
+  <!-- diff lines -->
+  <rect x="246" y="200" width="556" height="16" class="acf"/>
+  <rect x="262" y="204" width="10" height="8" class="acs"/>
+  <rect x="282" y="205" width="360" height="7" rx="3.5" class="acs" opacity=".55"/>
+  <rect x="262" y="226" width="10" height="8" class="ff"/>
+  <rect x="282" y="227" width="300" height="7" rx="3.5" class="fl"/>
+  <rect x="262" y="248" width="10" height="8" class="ff"/>
+  <rect x="282" y="249" width="410" height="7" rx="3.5" class="fl"/>
+  <rect x="262" y="270" width="10" height="8" class="ff"/>
+  <rect x="282" y="271" width="250" height="7" rx="3.5" class="fl"/>
+  <!-- approve chip -->
+  <rect x="640" y="284" width="146" height="22" rx="11" class="ac" fill="none"/>
+  <path d="M654 295 l5 5 l9 -10" class="ac" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="676" y="291" width="92" height="8" rx="4" class="acs" opacity=".55"/>
+  <!-- input line -->
+  <rect x="246" y="408" width="556" height="34" rx="9" class="ln" fill="none"/>
+  <text x="262" y="430" fill="#46a06a" font-family="monospace" font-size="15">$</text>
+  <line x1="280" y1="425" x2="282" y2="425" class="ac"/>
+  <rect x="288" y="421" width="6" height="14" class="acs" opacity=".8"/>
+</svg>

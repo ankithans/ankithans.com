@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ankithans-com",
+  "compatibility_date": "2026-06-12",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "@tanstack/react-start/server-entry",
+  "routes": [
+    {
+      "pattern": "ankithans.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.ankithans.com",
+      "custom_domain": true
+    }
+  ]
+}

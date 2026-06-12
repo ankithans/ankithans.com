@@ -1,0 +1,51 @@
+---
+title: Legible agents win
+slug: legible-agents
+date: "2026-05-20"
+summary: >-
+  After building an agent console at Tessell, I'm convinced the hard problem
+  isn't capability — it's making an agent's work legible enough to trust.
+tags: [agents, infrastructure, dx]
+---
+
+I spend my days building the surface where a person hands work to an agent and
+watches it happen. The lesson that keeps repeating: **an agent product is only
+as good as how legible its work is.**
+
+## Capability is necessary, not sufficient
+
+It's tempting to believe the race is about raw capability — a smarter model, a
+bigger context, more tools. Capability matters. But in practice the thing that
+decides whether someone *lets* an agent do real work is whether they can see what
+it's doing and trust it not to surprise them.
+
+That trust is an interface problem as much as a model problem.
+
+## What legibility looks like
+
+Concretely, on the console I work on, legibility is a handful of unglamorous
+features:
+
+- **Durable transcripts.** Close the tab mid-run, come back, and the full history
+  is still there — every step, not a summary.
+- **Visible diffs.** The agent changed files? Show me exactly which lines, before
+  I'm asked to approve anything.
+- **Explicit approvals.** The agent pauses at consequential steps and asks. No
+  silent escalation.
+- **Honest events.** The UI reflects what the runtime is *actually* doing, not an
+  optimistic guess.
+
+None of these make the agent smarter. All of them make it trustworthy.
+
+## Latency is the other half
+
+The second thing that decides adoption is how fast the loop is — and that lives
+in infrastructure no user ever sees. How quickly a sandbox starts. How cheaply it
+resumes with its filesystem intact instead of rebuilding from scratch. A
+brilliant agent behind a 60-second cold start is a demo, not a tool.
+
+## The takeaway
+
+If you're building agent products, spend at least as much time on **legibility
+and latency** as on the model. The teams that win won't necessarily have the
+smartest agent — they'll have the one people actually trust to run.

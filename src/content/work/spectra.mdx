@@ -1,0 +1,92 @@
+---
+title: Spectra
+slug: spectra
+org: Tessell
+role: Product Engineer — Developer Experience
+period: 2025 — Present
+status: Building
+order: 2
+tagline: developer experience for branchable Postgres
+summary: >-
+  Cloud-native Postgres with instant provisioning and copy-on-write branching.
+  I owned the developer experience — the Project → Branch → Operation model, the
+  console, the SQL workbench, and CLI/API parity.
+stack:
+  - TypeScript
+  - React
+  - PostgreSQL
+  - Design Systems
+  - CLI / API design
+metrics:
+  - { value: "<1s", label: "provision from warm pool" }
+  - { value: "<5s", label: "full-data branch" }
+  - { value: "10", label: "core flows defined" }
+cover: /media/spectra-branch.svg
+---
+
+<Callout label="confidentiality">
+  Spectra is an unreleased Tessell product. This is an abstracted account of the
+  developer-experience work I led; visuals are generic mocks, and numbers are the
+  velocity targets the experience was designed around.
+</Callout>
+
+## The problem
+
+Provisioning a database is still slow and ceremonial. Branching one — getting a
+full copy of production data to test a migration against — is usually a multi-hour
+ordeal, if it's possible at all. Spectra's bet: make Postgres feel like git.
+**Instant provisioning, copy-on-write branching, serverless start/stop economics.**
+
+The hard part isn't only the engine. It's the *experience* — making a powerful
+primitive feel obvious to a developer at 11pm shipping a migration.
+
+## What I owned
+
+I led the developer experience for Spectra: the conceptual model, the console,
+and the surfaces developers actually touch.
+
+### The mental model
+
+I authored the DX research that defined the **Project → Branch → Operation**
+language — where branches are the connectable database surfaces — and mapped the
+ten core product flows, CLI/API parity, failure recovery, and the agent/CI
+branch workflows that come with treating databases like code.
+
+<Spec rows={[
+  ["Project", "The logical home — config, members, environments"],
+  ["Branch", "A connectable database; created copy-on-write from another"],
+  ["Operation", "An action on a branch — query, migrate, resize, snapshot"],
+]} />
+
+### The console & workbench
+
+I built the Spectra console prototype around those flows: a context-aware rail,
+project and branch creation drawers, connection snippets, a **SQL editor**, a
+**table browser**, monitoring, and infrastructure setup/resize. Underneath, I
+created reusable database-console primitives — a schema browser and a
+psql-style data grid — and improved the shared design-system + portal layout
+they sit on.
+
+<Figure src="/media/spectra-branch.svg" alt="spectra — copy-on-write branching model" caption="Representative: copy-on-write branches forked from a project trunk" />
+
+### Making it fast to develop *on*
+
+Multi-app frontends are painful locally. I built the local dev loop — Make
+targets, a single-origin proxy, and rebuild/sync scripts — so the whole console
+could be developed against real services without fighting the toolchain.
+
+## The targets
+
+The experience was designed around aggressive velocity numbers:
+
+<Metrics items={[
+  { value: "<1s", label: "provision from pre-warmed pool" },
+  { value: "<5s", label: "full-data branch creation" },
+  { value: "sub-second", label: "schema-only branching" },
+]} />
+
+## What I took from it
+
+Developer experience is product surface, not polish. The model you choose —
+Project, Branch, Operation — decides whether a powerful engine feels like a
+superpower or a footgun. I learned to design the *words* before the screens.

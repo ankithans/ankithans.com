@@ -1,0 +1,60 @@
+<svg width="880" height="495" viewBox="0 0 880 495" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Representative live-show flow: phone to big screen">
+  <style>
+    .ln{stroke:#8b8a84;stroke-width:1.4}
+    .lf{stroke:#8b8a84;stroke-width:1.4;opacity:.4}
+    .fl{fill:#8b8a84;opacity:.12}
+    .ff{fill:#8b8a84;opacity:.3}
+    .ac{stroke:#46a06a;stroke-width:1.6}
+    .acf{fill:#46a06a;opacity:.16}
+    .acs{fill:#46a06a}
+  </style>
+  <rect x="40.7" y="40.7" width="798.6" height="413.6" rx="14" class="ln" fill="none"/>
+
+  <!-- phone -->
+  <rect x="96" y="120" width="150" height="256" rx="20" class="ln" fill="none"/>
+  <rect x="146" y="132" width="50" height="6" rx="3" class="ff"/>
+  <!-- QR -->
+  <rect x="126" y="156" width="90" height="90" rx="6" class="lf" fill="none"/>
+  <g fill="#8b8a84" opacity=".55">
+    <rect x="136" y="166" width="20" height="20"/><rect x="186" y="166" width="20" height="20"/>
+    <rect x="136" y="216" width="20" height="20"/><rect x="166" y="196" width="10" height="10"/>
+    <rect x="186" y="206" width="10" height="10"/><rect x="196" y="226" width="10" height="10"/>
+  </g>
+  <!-- request rows -->
+  <rect x="120" y="262" width="102" height="9" rx="4" class="acf"/>
+  <rect x="120" y="284" width="84" height="8" rx="4" class="fl"/>
+  <rect x="120" y="304" width="96" height="8" rx="4" class="fl"/>
+  <rect x="120" y="338" width="102" height="22" rx="11" class="ac" fill="none"/>
+  <text x="138" y="353" fill="#46a06a" font-family="monospace" font-size="11">request ♪</text>
+
+  <!-- flow arrow -->
+  <path d="M268 248 L 372 248" class="ac" fill="none" marker-end="url(#a)"/>
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0 0 L6 3 L0 6" fill="none" stroke="#46a06a" stroke-width="1.6"/>
+    </marker>
+  </defs>
+
+  <!-- big screen -->
+  <rect x="400" y="120" width="384" height="216" rx="10" class="ln" fill="none"/>
+  <line x1="592" y1="346" x2="592" y2="372" class="lf"/>
+  <line x1="540" y1="372" x2="644" y2="372" class="ln"/>
+  <!-- now playing -->
+  <circle cx="445" cy="165" r="18" class="ac" fill="none"/>
+  <path d="M440 156 v18 l14 -9 z" class="acs" opacity=".7"/>
+  <rect x="476" y="156" width="180" height="9" rx="4.5" class="ff"/>
+  <rect x="476" y="174" width="120" height="7" rx="3.5" class="fl"/>
+  <!-- request queue on screen -->
+  <rect x="424" y="216" width="336" height="1" class="lf"/>
+  <rect x="424" y="232" width="240" height="8" rx="4" class="fl"/>
+  <rect x="424" y="254" width="290" height="8" rx="4" class="fl"/>
+  <rect x="424" y="276" width="200" height="8" rx="4" class="fl"/>
+  <rect x="700" y="228" width="48" height="16" rx="8" class="acf"/>
+
+  <!-- audience dots -->
+  <g fill="#8b8a84" opacity=".35">
+    <circle cx="430" cy="410" r="5"/><circle cx="470" cy="416" r="5"/><circle cx="510" cy="408" r="5"/>
+    <circle cx="550" cy="418" r="5"/><circle cx="590" cy="409" r="5"/><circle cx="630" cy="417" r="5"/>
+    <circle cx="670" cy="410" r="5"/><circle cx="710" cy="416" r="5"/>
+  </g>
+</svg>

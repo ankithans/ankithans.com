@@ -1,0 +1,377 @@
+@import 'tailwindcss' source('../');
+
+@import '@fontsource-variable/newsreader/opsz.css';
+@import '@fontsource-variable/newsreader/opsz-italic.css';
+@import '@fontsource-variable/geist-mono';
+
+/* ----------------------------------------------------------------------------
+   Design tokens — "a letter, well set."
+   Warm paper, ink, one peacock-teal accent. Serif body, mono for dates/labels.
+---------------------------------------------------------------------------- */
+@theme {
+  --font-serif: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', monospace;
+
+  --color-paper: #faf9f5;
+  --color-ink: #211e1a;
+  --color-muted: #6e6a60;
+  --color-faint: #a39e92;
+  --color-line: #e7e3d9;
+  --color-accent: #0f6b5c;
+
+  --color-paper-dark: #141311;
+  --color-ink-dark: #e8e4db;
+  --color-muted-dark: #94907f;
+  --color-faint-dark: #5b574c;
+  --color-line-dark: #28251f;
+  --color-accent-dark: #58b8a3;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --paper: var(--color-paper);
+  --ink: var(--color-ink);
+  --muted: var(--color-muted);
+  --faint: var(--color-faint);
+  --line: var(--color-line);
+  --accent: var(--color-accent);
+  color-scheme: light;
+}
+
+.dark {
+  --paper: var(--color-paper-dark);
+  --ink: var(--color-ink-dark);
+  --muted: var(--color-muted-dark);
+  --faint: var(--color-faint-dark);
+  --line: var(--color-line-dark);
+  --accent: var(--color-accent-dark);
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    font-optical-sizing: auto;
+    font-synthesis: none;
+    font-kerning: normal;
+    /* Newsreader's default figures are tabular — prose wants proportional */
+    font-variant-numeric: proportional-nums;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+    hanging-punctuation: first allow-end;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--accent) 22%, transparent);
+  }
+
+  :focus-visible {
+    outline: 1.5px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 1px;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Primitives
+---------------------------------------------------------------------------- */
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 39rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  /* small mono meta — dates, labels */
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    color: var(--faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* section label — italic serif, quiet */
+  .label {
+    font-style: italic;
+    font-size: 1.0625rem;
+    color: var(--faint);
+  }
+
+  /* editorial link — quiet underline, fills with accent on hover */
+  .link {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in oklab, var(--faint) 55%, transparent);
+    text-underline-offset: 0.16em;
+    text-decoration-skip-ink: auto;
+    transition:
+      text-decoration-color 0.25s var(--ease-out-expo),
+      color 0.25s var(--ease-out-expo);
+  }
+  .link:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
+
+  /* highlighted link — already lit, no hover required */
+  .hl {
+    color: var(--accent);
+    text-decoration-color: color-mix(in oklab, var(--accent) 40%, transparent);
+  }
+  .hl:hover {
+    text-decoration-color: var(--accent);
+  }
+
+  .link-quiet {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.25s var(--ease-out-expo);
+  }
+  .link-quiet:hover {
+    color: var(--accent);
+  }
+
+  .hairline {
+    height: 1px;
+    width: 100%;
+    background-color: var(--line);
+  }
+
+  /* tiny logomarks next to project names */
+  .logomark {
+    display: inline-block;
+    object-fit: contain;
+    vertical-align: -0.18em;
+  }
+  /* black single-color marks flip to paper-white in dark mode */
+  .dark .logo-adapt {
+    filter: invert(1) brightness(0.92);
+  }
+  /* paired light/dark logo files */
+  .only-dark {
+    display: none;
+  }
+  .dark .only-dark {
+    display: inline-block;
+  }
+  .dark .only-light {
+    display: none;
+  }
+  /* the spectra elephant, pulled toward the site's teal */
+  .logo-spectra {
+    filter: hue-rotate(-65deg) saturate(1.6) brightness(1.3);
+  }
+
+  /* hand-drawn ink stroke — the page's one ornament */
+  .ink {
+    position: relative;
+    white-space: nowrap;
+  }
+  .ink-line {
+    display: block;
+    height: 0.6rem;
+  }
+  .ink-line svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .ink svg {
+    position: absolute;
+    inset-inline: 0;
+    bottom: -0.22em;
+    width: 100%;
+    height: 0.38em;
+    overflow: visible;
+  }
+  .ink-line path,
+  .ink path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: ink-draw 0.8s var(--ease-out-expo) 0.5s forwards;
+  }
+  @keyframes ink-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ink path {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+/* prose (MDX) ------------------------------------------------------------- */
+.prose {
+  color: var(--ink);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.prose > * + * {
+  margin-top: 1.3rem;
+}
+.prose h2 {
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  margin-top: 2.75rem;
+  margin-bottom: 0.25rem;
+}
+.prose h3 {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-top: 2rem;
+}
+.prose p,
+.prose ul,
+.prose ol {
+  color: color-mix(in oklab, var(--ink) 88%, var(--muted));
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.25rem;
+}
+.prose ul {
+  list-style: none;
+}
+.prose ul > li {
+  position: relative;
+}
+.prose ul > li::before {
+  content: '—';
+  position: absolute;
+  left: -1.25rem;
+  color: var(--faint);
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose li + li {
+  margin-top: 0.45rem;
+}
+.prose a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in oklab, var(--faint) 55%, transparent);
+  text-underline-offset: 0.16em;
+  text-decoration-skip-ink: auto;
+  transition:
+    text-decoration-color 0.25s,
+    color 0.25s;
+}
+.prose a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+.prose strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.prose em {
+  font-variation-settings: 'opsz' 18;
+}
+.prose blockquote {
+  border-left: 1px solid var(--accent);
+  padding-left: 1.25rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  background-color: color-mix(in oklab, var(--muted) 12%, transparent);
+  padding: 0.12em 0.38em;
+  border-radius: 3px;
+}
+.prose pre {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  padding: 1.1rem 1.25rem;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  overflow-x: auto;
+  background-color: color-mix(in oklab, var(--paper) 60%, white);
+}
+.dark .prose pre {
+  background-color: #0f0e0d;
+}
+.prose pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* essays open with a drop cap — one per page, writing posts only */
+.essay .prose > p:first-of-type::first-letter {
+  float: left;
+  font-size: 3.05em;
+  line-height: 0.85;
+  padding-right: 0.12em;
+  font-weight: 500;
+  color: var(--accent);
+  font-variation-settings: 'opsz' 72;
+}
+@supports (initial-letter: 3) or (-webkit-initial-letter: 3) {
+  .essay .prose > p:first-of-type::first-letter {
+    float: none;
+    padding: 0;
+    margin-right: 0.12em;
+    -webkit-initial-letter: 3;
+    initial-letter: 3;
+    font-size: unset;
+    line-height: unset;
+  }
+}
+
+/* shiki dual-theme */
+.prose pre code span {
+  color: var(--shiki-light);
+}
+.dark .prose pre code span {
+  color: var(--shiki-dark);
+}

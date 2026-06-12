@@ -1,0 +1,64 @@
+---
+title: Vidyut
+slug: vidyut
+org: VidyutTech
+role: Associate Product Manager
+period: 2024 — 2025
+status: Shipped
+order: 4
+tagline: LLM document pipeline for EV lending
+summary: >-
+  Fintech infrastructure for EV financing. I built an in-house LLM/OCR document
+  system that cut vendor cost 70%, and architected the bureau/NBFC integrations
+  that automated most of underwriting.
+stack:
+  - LLMs / OCR
+  - Python
+  - Integrations
+  - Internal tools
+metrics:
+  - { value: "70%", label: "vendor cost cut" }
+  - { value: "<30s", label: "doc processing (from 2–3 min)" }
+  - { value: "60%", label: "underwriting automated" }
+cover: /media/vidyut-flow.svg
+---
+
+## The problem
+
+Lending runs on documents — KYC, bank statements, vehicle papers — and on data
+from credit bureaus and NBFC partners. Vidyut's financing flows were paying a
+vendor for document extraction and stitching integrations by hand. Both were
+slow and expensive.
+
+## What I built
+
+### In-house document intelligence
+
+I replaced the third-party extraction vendor with an **in-house LLM/OCR document
+system**. It cut vendor cost by **70%** and brought processing time down from
+**2–3 minutes to under 30 seconds** per document.
+
+<Metrics items={[
+  { value: "70%", label: "vendor cost reduction" },
+  { value: "2–3min → <30s", label: "processing time" },
+  { value: "in-house", label: "no external vendor" },
+]} />
+
+### Bureau & NBFC integrations + ops products
+
+I architected the credit-bureau and NBFC integrations and the internal
+operations products around them. That automated **60% of underwriting**, improved
+turnaround time by **40%**, and lifted conversion from **45% to 55%**.
+
+<Spec rows={[
+  ["Documents", "LLM/OCR extraction, in-house"],
+  ["Integrations", "Credit bureaus + NBFC partners"],
+  ["Ops", "Internal underwriting & operations tooling"],
+  ["Outcome", "Faster, cheaper, higher-converting lending flow"],
+]} />
+
+## What I took from it
+
+Most of the value in applied AI is plumbing. The model was the easy part; the
+win came from wiring it into a real workflow — documents in, decisions out —
+and measuring the thing that mattered: cost, time, and conversion.
