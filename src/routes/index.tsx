@@ -255,6 +255,22 @@ function Home() {
     <div className="wrap pt-20 sm:pt-28">
       {/* the statement */}
       <Reveal>
+        <a
+          href="https://x.com/AnkitHans15"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Ankit Hans on X"
+          className="mb-6 inline-block rounded-full transition-opacity hover:opacity-80"
+        >
+          <img
+            src="/media/avatar.png"
+            alt="Ankit Hans"
+            width={52}
+            height={52}
+            className="rounded-full"
+            style={{ width: 52, height: 52, boxShadow: '0 0 0 1px var(--line)' }}
+          />
+        </a>
         <p className="meta mb-6 uppercase">Software engineer, Bengaluru</p>
         <h1
           className="text-[clamp(2rem,7vw,3.5rem)] leading-[1.2] font-normal tracking-[-0.01em]"
