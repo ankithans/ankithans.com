@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { getPost, formatDate } from '~/lib/content'
+import { absoluteUrl, seo } from '~/lib/meta'
 import { Mdx } from '~/components/mdx'
 import { Reveal } from '~/components/reveal'
 
@@ -11,7 +12,24 @@ export const Route = createFileRoute('/writing/$slug')({
   },
   head: ({ params }) => {
     const entry = getPost(params.slug)
-    return { meta: [{ title: entry ? `${entry.title} — Ankit Hans` : 'Writing' }] }
+    const path = entry ? `/writing/${entry.slug}` : '/writing'
+
+    return {
+      meta: entry
+        ? [
+            ...seo({
+              title: `${entry.title} — Ankit Hans`,
+              description: entry.summary,
+              path,
+              image: `/og/writing/${entry.slug}.png`,
+              imageAlt: `Preview card for ${entry.title}`,
+              type: 'article',
+            }),
+            { property: 'article:published_time', content: entry.date },
+          ]
+        : [{ title: 'Writing' }],
+      links: [{ rel: 'canonical', href: absoluteUrl(path) }],
+    }
   },
   notFoundComponent: () => (
     <div className="wrap pt-32 text-center">

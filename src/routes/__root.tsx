@@ -8,33 +8,28 @@ import {
 import * as React from 'react'
 import appCss from '~/styles/app.css?url'
 import { site } from '~/lib/site'
+import { seo } from '~/lib/meta'
 import { ThemeProvider, themeScript } from '~/components/theme'
 import { Header } from '~/components/header'
 import { Footer } from '~/components/footer'
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: site.name },
-      {
-        name: 'description',
-        content: site.tagline,
-      },
-      { name: 'theme-color', content: '#141311' },
-      { property: 'og:title', content: site.name },
-      { property: 'og:description', content: site.tagline },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:image', content: `${site.url}/og.png` },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:image', content: `${site.url}/og.png` },
-    ],
-    links: [
-      { rel: 'stylesheet', href: appCss },
-      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-    ],
-  }),
+  head: () => {
+    const homeSeo = seo({ title: site.name, description: site.tagline })
+
+    return {
+      meta: [
+        { charSet: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        ...homeSeo,
+        { name: 'theme-color', content: '#141311' },
+      ],
+      links: [
+        { rel: 'stylesheet', href: appCss },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      ],
+    }
+  },
   component: RootComponent,
   notFoundComponent: NotFound,
 })
